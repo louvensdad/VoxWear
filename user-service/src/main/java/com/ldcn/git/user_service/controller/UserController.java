@@ -1,5 +1,8 @@
 package com.ldcn.git.user_service.controller;
 
+import java.net.http.HttpRequest;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ldcn.git.user_service.dto.UserRequestDTO;
 import com.ldcn.git.user_service.dto.UserResponseDTO;
@@ -29,8 +33,8 @@ public class UserController {
         }
 
      @GetMapping("/email")
-    public ResponseEntity<UserResponseDTO> getUserByEmail(@PathVariable String email) {    
-        return ResponseEntity.ok(userService.getUserByEmail(email));
+    public ResponseEntity<UserResponseDTO> getUserByEmail(@RequestParam String email) {    
+        return ResponseEntity.ok().body(userService.getUserByEmail(email));
     }
 
     @DeleteMapping("/{id}")
