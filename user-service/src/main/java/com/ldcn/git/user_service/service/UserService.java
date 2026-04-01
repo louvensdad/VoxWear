@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.ldcn.git.user_service.Mapper.UsuarioMapper;
 import com.ldcn.git.user_service.dto.UserRequestDTO;
 import com.ldcn.git.user_service.dto.UserResponseDTO;
+import com.ldcn.git.user_service.exception.UserNotFoundException;
 import com.ldcn.git.user_service.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,7 @@ public UserResponseDTO createUser (UserRequestDTO userRequestDTO) {
 
   public UserResponseDTO getUserByEmail(String email) {
     var user = userRepository.findByEmail(email)
-   .orElseThrow (()-> new RuntimeException("User not found" + email));
+   .orElseThrow (()-> new UserNotFoundException("User not found " + email));
     return UsuarioMapper.toDTO(user);
   }
 
