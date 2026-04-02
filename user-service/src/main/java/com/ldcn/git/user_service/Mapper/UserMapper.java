@@ -4,7 +4,7 @@ import com.ldcn.git.user_service.dto.UserRequestDTO;
 import com.ldcn.git.user_service.dto.UserResponseDTO;
 import com.ldcn.git.user_service.model.User;
 
-public class UsuarioMapper {
+public class UserMapper {
 
     public static UserResponseDTO toDTO(User user) {
         if (user == null) {
@@ -14,7 +14,7 @@ public class UsuarioMapper {
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
-                user.getTelefone()
+                user.getPhone()
         );
     }
 
@@ -25,7 +25,9 @@ public class UsuarioMapper {
         User user = new User();
         user.setName(userRequestDTO.getName());
         user.setEmail(userRequestDTO.getEmail());
-        user.setTelefone(userRequestDTO.getTelefone());
+        user.setPhone(userRequestDTO.getPhone());
+        user.setHeight(userRequestDTO.getHeight());
+        user.setWeight(userRequestDTO.getWeight());
         user.setPassword(userRequestDTO.getPassword());
         return user;
     }
